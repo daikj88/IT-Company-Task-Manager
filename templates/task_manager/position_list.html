@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <h1>
+    Position list
+    <a href="{% url 'task_manager:position-create' %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
+  </h1>
+    <form method="get" action="" class="form-inline">
+    {{ search_form|crispy }}
+    <input class="btn btn-secondary" type="submit" value="🔎">
+  </form>
+  {% if position_list %}
+    <ul>
+      {% for position in position_list %}
+        <li>
+          {{ position.id }} - {{ position.name }} ({{ position.workers.count }})
+          <br>
+          {% if position.workers.all %}
+            Work in this position:
+            {% for worker in position.workers.all %}
+              {{ worker.get_full_name }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+          {% else %}
+            No one works in this position yet
+          {% endif %}
+          <br>
+          <a href="{% url 'task_manager:position-update' pk=position.id %}">Update</a>
+          <a href="{% url 'task_manager:position-delete' pk=position.id %}">Delete</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no positions yet.</p>
+  {% endif %}
+{% endblock %}
