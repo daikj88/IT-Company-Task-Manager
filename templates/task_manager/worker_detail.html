@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    {{ worker.get_full_name }}
+    <a href="{% url 'task_manager:worker-delete' pk=worker.id %}" class="btn btn-danger link-to-page">
+      Delete
+    </a>
+
+    <a href="{% url 'task_manager:worker-update' pk=worker.id %}" class="btn btn-secondary link-to-page">
+      Update
+    </a>
+  </h1>
+
+  <p><strong>First name:</strong> {{ worker.first_name }}</p>
+  <p><strong>Last name:</strong> {{ worker.last_name }}</p>
+  <p><strong>Position:</strong> {{ worker.position.name }}</p>
+
+  <div class="ml-3">
+    <h4>Currently working on:</h4>
+
+    {% for task in worker.tasks.all %}
+      {% if not task.is_completed %}
+        <hr>
+        <p><strong>Task:</strong> {{ task.name }}</p>
+        <p><strong>Priority:</strong> {{ task.priority }}</p>
+      {% endif %}
+    {% empty %}
+      <p>No tasks are assigned to this employee yet.</p>
+    {% endfor %}
+  </div>
+{% endblock %}
