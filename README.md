@@ -1,14 +1,5 @@
 # IT-Company-Task-Manager
 
-## Check this out!
-
-You can use the following user to log in:
-
-```
-login: user
-password: user12345
-```
-
 ## Installation
 
 Run the following code in terminal:
