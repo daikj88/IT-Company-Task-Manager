@@ -1,5 +1,16 @@
 # IT-Company-Task-Manager
 
+## Check this out!
+
+[Task Manager project deployed to Render](https://it-company-task-manager-1qnh.onrender.com)
+
+You can use the following user to log in:
+
+```
+login: user1
+password: user09876
+```
+
 ## Installation
 
 Run the following code in terminal:
