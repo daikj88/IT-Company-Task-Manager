@@ -60,7 +60,7 @@ class TaskTypeListView(LoginRequiredMixin, generic.ListView):
 class TaskTypeCreateView(LoginRequiredMixin, generic.CreateView):
     model = TaskType
     fields = "__all__"
-    success_url = reverse_lazy("task_manager:task_type-list")
+    success_url = reverse_lazy("task_manager:task-type-list")
 
 
 class TaskTypeUpdateView(LoginRequiredMixin, generic.UpdateView):

@@ -18,7 +18,8 @@ class Position(models.Model):
     class Meta:
         ordering = ["name", ]
 
-
+    def __str__(self):
+        return f"{self.name}"
 
 
 class Worker(AbstractUser):
